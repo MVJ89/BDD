@@ -3,8 +3,11 @@ package stepDefinition;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,6 +30,21 @@ public class LoginPage {
 		driver.get("http://demo.automationtesting.in/SignIn.html");
 		driver.manage().window().maximize();
 		// driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+		/*
+		 * ChromeOptions options = new ChromeOptions();
+		 * options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);// for
+		 * browser capabilities to accept
+		 * options.setPageLoadStrategy(PageLoadStrategy.NORMAL); // for page load in
+		 * normal way
+		 * 
+		 * driver = new ChromeDriver(options);
+		 * 
+		 * String url = ReadConfigFile.readValues().getProperty("URL");// readValues() from config file
+		 * is a method in 'ReadConfigFile' class
+		 * 
+		 * driver.get(url);
+		 */
 
 	}
 
@@ -53,17 +71,20 @@ public class LoginPage {
 	public void verifyErrorMessage() {
 
 		// Explicit Wait below steps
-		//in this Explicit wait, we can tell util run particular step for mentioned time
+		// in this Explicit wait, we can tell until run particular step for mentioned
+		// time
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("errormsg"))));
 		Assert.assertTrue(driver.findElement(By.id("errormsg")).isDisplayed());
+		
+		
 
 	}
 
 	@When("^User enters multiple values in Email\"(.*)\"$")
 	public void enterParaEmail(String emailID) {
-		
+
 		driver.findElement(By.xpath("//input[@placeholder='E mail']")).sendKeys(emailID);
 
 	}
@@ -72,7 +93,6 @@ public class LoginPage {
 	public void enterParaPassword(String password) {
 
 		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys(password);
-		
-		
+
 	}
 }

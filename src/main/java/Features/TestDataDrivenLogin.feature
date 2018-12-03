@@ -14,4 +14,17 @@ Examples:
 |email|password|
 |ABC|XYZ|
 |123|456|
+|def|mno|
 
+#mangeshjagrut@gmail.com  pwd : Demo123 [http://demo.automationtesting.in/Index.html]
+#Above last section is called as 'Scenario outline' which is represented by keyword 'Examples'
+#Run this Feature file by RMC -> Run As-> Cucumber Feature
+#There are a few secondary keywords as well:
+
+# 'Background' keyword - used when the same set of given statements are repeated 
+# in each scenario of the feature file.
+
+# """ (Doc Strings)
+# | (Data Tables)
+# @ (Tags)
+# # (Comments)
